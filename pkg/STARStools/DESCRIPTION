@@ -1,0 +1,11 @@
+Package: STARStools
+Type: Package
+Title: R functions for working spatial/remote sensing data. 
+Version: 0.1
+Date: 2011-08-23
+Author: Jonathan Asher Greenberg
+Maintainer: Jonathan Asher Greenberg <STARStools@estarcion.net>
+Depends: R, raster, rgdal, sp
+Description: R functions for working with station and gridded climate data.
+License: GPL (>= 2)
+LazyLoad: yes
