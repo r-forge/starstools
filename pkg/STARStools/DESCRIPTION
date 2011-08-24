@@ -1,11 +1,35 @@
 Package: STARStools
+Maintainer: Jonathan Asher Greenberg <STARStools@estarcion.net>
+License: GPL (>= 2)
+Title: R functions for working spatial/remote sensing data.
 Type: Package
-Title: R functions for working spatial/remote sensing data. 
+LazyLoad: yes
+Author: Jonathan Asher Greenberg
+Description: R functions for working with station and gridded climate
+    data.
 Version: 0.1
 Date: 2011-08-23
-Author: Jonathan Asher Greenberg
-Maintainer: Jonathan Asher Greenberg <STARStools@estarcion.net>
 Depends: R, raster, rgdal, sp
-Description: R functions for working with station and gridded climate data.
-License: GPL (>= 2)
-LazyLoad: yes
+Collate: 'AAAclass_definitions.R'
+    'MATCH.SpatialPointsDataFrameListZoo.R'
+    'MATCH.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
+    'aggregate.SpatialPointsDataFrameListZoo.R'
+    'aggregate.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
+    'as.Date.SpatialPointsDataFrameListZoo.R'
+    'as.Date.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
+    'as.SpatialPointsDataFrameList.R'
+    'as.SpatialPointsDataFrameListZoo.R'
+    'as.data.frame.SpatialPointsDataFrameList.R'
+    'as.data.frame.SpatialPointsDataFrameList_SpatialPointsDataFrameList.R'
+    'as.list.SpatialPointsDataFrameList.R'
+    'as.list.SpatialPointsDataFrameList_SpatialPointsDataFrameList.R'
+    'as.yearmon.SpatialPointsDataFrameListZoo.R'
+    'as.yearmon.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
+    'check_list_classes.R' 'extract_synced.R' 'filter_outliers.R'
+    'index.SpatialPointsDataFrameListZoo.R'
+    'index.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
+    'rstarspan.R' 'spatial_sync_vector.R'
+    'subset.zoo.SpatialPointsDataFrameListZoo.R'
+    'subset.zoo.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
+    'tile_raster.R' 'time.SpatialPointsDataFrameListZoo.R'
+    'time.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
