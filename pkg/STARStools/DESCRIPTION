@@ -5,8 +5,7 @@ Title: R functions for working spatial/remote sensing data.
 Type: Package
 LazyLoad: yes
 Author: Jonathan Asher Greenberg
-Description: R functions for working with station and gridded climate
-    data.
+Description: R functions for working spatial/remote sensing data.
 Version: 0.1
 Date: 2011-08-23
 Depends: R, raster, rgdal, sp
