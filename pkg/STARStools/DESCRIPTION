@@ -8,8 +8,8 @@ Author: Jonathan Asher Greenberg
 Description: R functions for working spatial/remote sensing data.
 Version: 0.1
 Date: 2011-08-23
-Depends: R, raster, rgdal, sp
-Collate: 'AAAclass_definitions.R'
+Depends: R, methods, raster, rgdal, sp, zoo
+Collate: 'AAAclass_definitions.R' 'AAAgeneric_definitions.R'
     'MATCH.SpatialPointsDataFrameListZoo.R'
     'MATCH.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
     'aggregate.SpatialPointsDataFrameListZoo.R'

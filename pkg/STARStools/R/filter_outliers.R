@@ -1,5 +1,4 @@
 #' Finds outliers using a variety of techniques.
-roxygen()
 
 find_outliers <- function(x,method="tukeys")
 {

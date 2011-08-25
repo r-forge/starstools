@@ -1,0 +1,2 @@
+exportClasses(SpatialPointsDataFrameList)
+exportClasses(SpatialPointsDataFrameListZoo)

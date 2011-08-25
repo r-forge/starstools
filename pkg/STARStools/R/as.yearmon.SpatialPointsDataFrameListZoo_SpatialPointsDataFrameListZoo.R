@@ -1,4 +1,4 @@
 setMethod("as.yearmon",
-    signature(x = "SpatialPointsDataFrameListZoo"),
+    signature(x="SpatialPointsDataFrameListZoo"),
 	as.yearmon.SpatialPointsDataFrameListZoo
 )

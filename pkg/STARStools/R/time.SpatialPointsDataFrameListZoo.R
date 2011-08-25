@@ -1,9 +1,3 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
 time.SpatialPointsDataFrameListZoo=function(x,...)
 {
 	newlist=mapply(zoo:::time.zoo,x@list,simplify=FALSE)
