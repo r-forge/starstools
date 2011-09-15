@@ -1,21 +1,27 @@
-#' @title Tiles raster data
 #' Tiles raster data (with optional overlap).
+#' @title Tiles raster data
 #' @param raster Input raster, brick or stack.
 #' @param tilebasename Character. Output basename for tiles.
-#' @param targetDir Character. Output directory for the tiles.
+#' @param targetDir Character. Output directory for the tiles.  If this is missing, the files are assumed to be temporary.
 #' @param ps Numeric or vector. Tile size in pixel units.  Can be a single value or c(x tile size,y tile size).
 #' @param ol Numeric or vector. Overlap size in pixel units.  Can be a single value or c(x overlap size,y overlap size).
 #' @param outformat Character. Output format of the tiles.  Use gdalDrivers() (part of rgdal) for the format codes.
 #' @param overwrite Logical. Should existing files be overwritten?
-#' @param progress: Character. Display processing progress. Valid values are "text", "window" and "" (no processing bar).
+#' @param progress Character. Display processing progress. Valid values are "text", "window" and "" (no processing bar).
 #' @name raster_retile
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
-
+#' @examples
+#' tahoe_highrez <- brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
+#' # Create 50x25 pixel tiles with 10 pixel overlap.
+#' tahoe_highrez_tiles <- raster_retile(tahoe_highrez,ps=c(50,25),ol=10)
+#' @export
 
 raster_retile=function(raster,tilebasename,targetDir,
 		ps=c(256,256),ol=c(0,0),
 		outformat="raster",overwrite=FALSE,progress="")
 {
+#	initial_directory=getwd()
+
 	# Do some checks
 	if(length(ps)==1)
 	{
@@ -26,9 +32,28 @@ raster_retile=function(raster,tilebasename,targetDir,
 	{
 		ol=c(ol,ol)
 	}
+	if(missing(targetDir))
+	{
+		targetDir=NA
+	} else
+	{
+		
+		setwd(targetDir)
+	}
 	
-	initial_directory=getwd()
-	setwd(targetDir)
+	if(missing(tilebasename) && !is.na(targetDir))
+	{
+		print("You must assign a tilebasename if you have selected a targetDir...")
+		return()
+	} else
+	{
+		if(missing(tilebasename))
+		{
+			tilebasename=NA
+		}
+	}
+	
+
 	raster_extent=extent(raster)
 	raster_resolution=res(raster)
 	ps_native_resolution=ps*raster_resolution
@@ -89,14 +114,13 @@ raster_retile=function(raster,tilebasename,targetDir,
 		}
 
 		tile_extent=extent(c(sort(c(xmin_tile,xmax_tile)),sort(c(ymin_tile,ymax_tile))))
-		
-#		tile_extent=extent(c(
-#				as.numeric(ul_single[1])-ol_native_resolution[1],
-#				as.numeric(ul_single[1])+ps_native_resolution[1]+ol_native_resolution[1],
-#				as.numeric(ul_single[2])-ol_native_resolution[2],
-#				as.numeric(ul_single[2])+ps_native_resolution[2]+ol_native_resolution[2]
-#		))
-		tile_raster=crop(raster,tile_extent,filename=tilename,format=outformat,overwrite=overwrite)
+		if(is.na(targetDir))
+		{
+			tile_raster=crop(raster,tile_extent)
+		} else
+		{
+			tile_raster=crop(raster,tile_extent,filename=tilename,format=outformat,overwrite=overwrite)
+		}
 		return(tile_raster)
 	}
 	
@@ -105,7 +129,7 @@ raster_retile=function(raster,tilebasename,targetDir,
 			ps_native_resolution=ps_native_resolution,ol_native_resolution=ol_native_resolution,
 			outformat=outformat,overwrite=overwrite,progress=progress,invert_coord))
 	
-	setwd(intial_directory)
+#	setwd(intial_directory)
 	return(raster_tiles)
 	
 }

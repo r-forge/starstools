@@ -1,8 +1,8 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
+#' subset.zoo.SpatialPointsDataFrameListZoo
+#' @param x TODO
+#' @param subset TODO
+#' @param ... TODO
+#' @export
 
 subset.zoo.SpatialPointsDataFrameListZoo=function(x,subset,...)
 {	

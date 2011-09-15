@@ -1,8 +1,7 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
+#' as.data.frame.SpatialPointsDataFrameList
+#' @param x TODO
+#' @param ... TODO
+#' @export
 
 as.data.frame.SpatialPointsDataFrameList=function(x,...)
 {

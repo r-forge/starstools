@@ -1,8 +1,8 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
+#' check_list_classes
+#' @param list TODO
+#' @param class_to_check TODO
+#' @param check_inheritance TODO
+#' @export
 
 check_list_classes=function(list,class_to_check,check_inheritance=FALSE)
 {

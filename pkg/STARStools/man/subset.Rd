@@ -1,3 +1,4 @@
 \name{subset}
 \alias{subset}
-\title{subset}
+\title{subset...}
+\description{subset}

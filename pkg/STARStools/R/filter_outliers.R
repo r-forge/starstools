@@ -1,4 +1,7 @@
 #' Finds outliers using a variety of techniques.
+#' @param x TODO
+#' @param method TODO
+#' @export
 
 find_outliers <- function(x,method="tukeys")
 {
@@ -11,6 +14,10 @@ find_outliers <- function(x,method="tukeys")
 	return(outliers_vector)
 }
 
+#' filter_outliers
+#' @param x TODO
+#' @param method TODO
+#' @export
 filter_outliers = function(x,method="tukeys")
 {
 	if(class(x)=="zoo")

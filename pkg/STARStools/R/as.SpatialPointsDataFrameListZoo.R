@@ -1,7 +1,9 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
+#' as.SpatialPointsDataFrameListZoo
+#' @param SpatialPointsDataFrame TODO
+#' @param list TODO
+#' @param by TODO
+#' @param all Logical.
+#' @export
 
 as.SpatialPointsDataFrameListZoo=function(SpatialPointsDataFrame,list,by=NA,all=FALSE)
 {

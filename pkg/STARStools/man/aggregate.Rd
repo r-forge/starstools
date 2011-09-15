@@ -1,3 +1,4 @@
 \name{aggregate}
 \alias{aggregate}
-\title{aggregate}
+\title{aggregate...}
+\description{aggregate}

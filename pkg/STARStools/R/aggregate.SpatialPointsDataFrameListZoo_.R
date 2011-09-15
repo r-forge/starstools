@@ -1,8 +1,8 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
+#' aggregate.SpatialPointsDataFrameListZoo
+#' @param x TODO
+#' @param by TODO
+#' @param ... TODO
+#' @export
 
 aggregate.SpatialPointsDataFrameListZoo=function(x,by,...)
 {

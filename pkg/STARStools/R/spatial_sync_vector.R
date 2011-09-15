@@ -1,13 +1,8 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
+#' spatial_sync_vector
+#' @param unsynced TODO
+#' @param reference TODO
+#' @param verbose Logical. TODO
+#' @export
 
 spatial_sync_vector <- function(unsynced,reference,verbose=TRUE)
 {

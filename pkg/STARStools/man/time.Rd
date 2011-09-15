@@ -1,3 +1,4 @@
 \name{time}
 \alias{time}
-\title{time}
+\title{time...}
+\description{time}

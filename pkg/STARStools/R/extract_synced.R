@@ -1,8 +1,8 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
+#' extract_synced
+#' @param x TODO
+#' @param y TODO
+#' @param ... TODO
+#' @export
 
 extract_synced=function(x,y,...)
 {

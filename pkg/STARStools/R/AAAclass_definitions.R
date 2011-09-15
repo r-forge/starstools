@@ -1,9 +1,3 @@
-# TODO: Add comment
-# 
-# Author: jonathan
-###############################################################################
-
-
 #' An S4 class that expands a SpatialPointsDataFrame to include a list.
 #' @slot list 
 #' @export

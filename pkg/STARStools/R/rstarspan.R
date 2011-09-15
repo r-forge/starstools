@@ -1,7 +1,7 @@
 #' Extracts raster data at vector locations.
 #' @param vectors a vector of superclass "Spatial" or a list of vectors.
 #' @param rasters a raster of superclass "Raster" or a list of rasters.
-#' @param outformat
+#' @param outformat TODO
 
 
 rstarspan=function(vectors,rasters,outformat="SpatialDataFrame")
