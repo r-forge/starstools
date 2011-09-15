@@ -1,0 +1,9 @@
+WARNING: omitting pointless dependence on 'R' without a version requirement
+* installing *source* package ‘STARStools’ ...
+** R
+Error in .install_package_code_files(".", instdir) : 
+files in 'Collate' field missing from '/Users/jonathan/Documents/code/eclipse/STARStools/pkg/STARStools/R':
+  as.list.SpatialPointsDataFrameList.R
+  as.list.SpatialPointsDataFrameList_SpatialPointsDataFrameList.R
+ERROR: unable to collate and parse R files for package ‘STARStools’
+* removing ‘/Users/jonathan/Documents/code/eclipse/STARStools/pkg/STARStools.Rcheck/STARStools’
