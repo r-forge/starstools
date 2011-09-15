@@ -1,8 +1,32 @@
+#' @title Tiles raster data
+#' Tiles raster data (with optional overlap).
+#' @param raster Input raster, brick or stack.
+#' @param tilebasename Character. Output basename for tiles.
+#' @param targetDir Character. Output directory for the tiles.
+#' @param ps Numeric or vector. Tile size in pixel units.  Can be a single value or c(x tile size,y tile size).
+#' @param ol Numeric or vector. Overlap size in pixel units.  Can be a single value or c(x overlap size,y overlap size).
+#' @param outformat Character. Output format of the tiles.  Use gdalDrivers() (part of rgdal) for the format codes.
+#' @param overwrite Logical. Should existing files be overwritten?
+#' @param progress: Character. Display processing progress. Valid values are "text", "window" and "" (no processing bar).
+#' @name raster_retile
+#' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
+
+
 raster_retile=function(raster,tilebasename,targetDir,
 		ps=c(256,256),ol=c(0,0),
 		outformat="raster",overwrite=FALSE,progress="")
 {
 	# Do some checks
+	if(length(ps)==1)
+	{
+		ps=c(ps,ps)
+	}
+	
+	if(length(ol)==1)
+	{
+		ol=c(ol,ol)
+	}
+	
 	initial_directory=getwd()
 	setwd(targetDir)
 	raster_extent=extent(raster)
