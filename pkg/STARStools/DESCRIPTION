@@ -6,7 +6,7 @@ Type: Package
 LazyLoad: yes
 Author: Jonathan Asher Greenberg
 Description: R functions for working spatial/remote sensing data.
-Version: 0.2
+Version: 0.3
 Date: 2011-09-15
 Depends: R (>= 2.13), methods, raster, rgdal, sp, zoo, maptools
 Collate: 'AAAclass_definitions.R' 'AAAgeneric_definitions.R' 'aggregate.SpatialPointsDataFrameListZoo_.R'
@@ -22,8 +22,8 @@ Collate: 'AAAclass_definitions.R' 'AAAgeneric_definitions.R' 'aggregate.SpatialP
     'extract_synced.R' 'filter_outliers.R' 'index.SpatialPointsDataFrameListZoo_.R'
     'index.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
     'MATCH.SpatialPointsDataFrameListZoo_.R'
-    'MATCH.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R' 'raster_retile.R' 'rstarspan.R'
-    'spatial_sync_vector.R' 'subset.zoo.SpatialPointsDataFrameListZoo_.R'
+    'MATCH.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R' 'radians_to_degrees.R'
+    'raster_retile.R' 'rstarspan.R' 'spatial_sync_vector.R' 'subset.zoo.SpatialPointsDataFrameListZoo_.R'
     'subset.zoo.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R' 'tahoe_highrez_data.R'
     'time.SpatialPointsDataFrameListZoo_.R'
     'time.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'

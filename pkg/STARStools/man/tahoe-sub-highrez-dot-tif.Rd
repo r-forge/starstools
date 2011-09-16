@@ -5,5 +5,5 @@
 \docType{data}
 \author{Jonathan A. Greenberg \email{STARStools@estarcion.net}}
 \keyword{data}
-\examples{tahoe_highrez<-brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
+\examples{tahoe_highrez <- brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
 plotRGB(tahoe_highrez)}

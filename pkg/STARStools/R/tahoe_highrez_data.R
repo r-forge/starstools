@@ -5,6 +5,6 @@
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
 #' @keywords data
 #' @examples
-#' tahoe_highrez<-brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
+#' tahoe_highrez <- brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
 #' plotRGB(tahoe_highrez)
 NULL
