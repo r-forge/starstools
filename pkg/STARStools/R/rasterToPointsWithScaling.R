@@ -9,7 +9,7 @@
 #' @param spatial	Logical. If TRUE, the function returns a SpatialPointsDataFrame object.
 #' @param ... Additional arguments.
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net} and Robert Hijimans
-#' @example 
+#' @examples
 #' tahoe_lidar_bareearth <- raster(system.file("external/tahoe_lidar_bareearth.tif", package="STARStools"))
 #' tahoe_lidar_bareearth_points=rasterToPointsWithScaling(tahoe_lidar_bareearth,fact=8,spatial=TRUE)
 #' spplot(tahoe_lidar_bareearth_points)
