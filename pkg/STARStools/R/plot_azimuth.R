@@ -4,7 +4,7 @@
 #' @param magnitude_raster RasterLayer. An optional raster which is used to scale the arrow lengths.
 #' @param max_arrows_per_dim Numeric. The maximum number of arrows to display in the longest dimension.
 #' @param arrowfun	The arrow function to use (see ?arrow.plot). 
-#' @param arrow.ex Numeric. Controls the length of the arrows (see ?arrow.plot).  In general, don't set this as the length will be chosen based on the arrow spacing.
+#' @param arrow.ex Numeric. Controls the length of the arrows (see \link{arrow.plot}).  In general, don't set this as the length will be chosen based on the arrow spacing.
 #' @param length Numeric. Length of the edges of the arrow head (in inches).
 #' @param magnitude_stetch Ignore.  Not currently working.
 #' @param azimuth_raster_aggregate_method Character. Function used when resampling the azimuth raster. Defaults to "ngb" (nearest neighbor), but can be "pa" (pixel aggregate).
@@ -13,9 +13,12 @@
 #' @examples 
 #' tahoe_lidar_bareearth <- raster(system.file("external/tahoe_lidar_bareearth.tif", package="STARStools"))
 #' tahoe_lidar_bareearth_azimuth <- slopeAspect(tahoe_lidar_bareearth,out=c('aspect'),unit='radians')
+#' # Azimuth plot with 25 arrows in the longest direction.
 #' plot_azimuth(azimuth_raster=tahoe_lidar_bareearth_azimuth,basemap_raster=tahoe_lidar_bareearth,magnitude_raster=tahoe_lidar_bareearth,max_arrows_per_dim=25)
+#' # Azimuth plot with 10 arrows in the longest direction.
+#' plot_azimuth(azimuth_raster=tahoe_lidar_bareearth_azimuth,basemap_raster=tahoe_lidar_bareearth,magnitude_raster=tahoe_lidar_bareearth,max_arrows_per_dim=10)
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
-#' @seealso \code{\link{arrow.plot}\link{arrows}} 
+#' @seealso \code{\link{arrow.plot},\link{arrows}} 
 #' @export
 
 

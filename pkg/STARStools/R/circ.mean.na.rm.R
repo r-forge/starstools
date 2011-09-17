@@ -21,13 +21,15 @@ circ.mean.na.rm = function(x,unit="radians",na.rm=TRUE)
 		x=rad(x)
 	}
 	
-	if(na.rm)
-	{
-		x_mean=circ.mean(na.omit(x))
-	} else
-	{
-		x_mean=circ.mean(x)
-	}
+#	if(na.rm)
+#	{
+#		x_mean=circ.mean(na.omit(x))
+#	} else
+#	{
+#		x_mean=circ.mean(x)
+#	}
+	
+	x_mean=as.numeric(mean.circular(x,na.rm=na.rm))
 	
 	if(unit=="degrees")
 	{
