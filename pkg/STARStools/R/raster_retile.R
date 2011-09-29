@@ -1,12 +1,14 @@
 #' Tiles raster data (with optional overlap).
 #' @title Tiles raster data
-#' @param raster Input raster, brick or stack.
-#' @param tilebasename Character. Output basename for tiles.
-#' @param targetDir Character. Output directory for the tiles.  If this is missing, the files are assumed to be temporary.
-#' @param ps Numeric or vector. Tile size in pixel units.  Can be a single value or c(x tile size,y tile size).
-#' @param ol Numeric or vector. Overlap size in pixel units.  Can be a single value or c(x overlap size,y overlap size).
-#' @param outformat Character. Output format of the tiles.  Use gdalDrivers() (part of rgdal) for the format codes.
-#' @param overwrite Logical. Should existing files be overwritten?
+#' @param raster Raster*. Raster to be retiled.
+#' @param tilebasename Character.  Output basename for each tile.
+#' @param targetDir Character.  Folder to save tiles to.
+#' @param ps Numeric. Pixel size of the output tile without overlap (if length(ps)==1 then the tiles are assumed to be square).
+#' @param ol Numeric.  Overlap buffer size (in pixel units).  
+#' @param outformat Character.  The output format of each tile.
+#' @param overwrite Logical.  Overwrite existing tiles?
+#' @param snow_enabled Logical.  Currently unsupported.
+#' @param snow_cpus Numeric.  Currently unsupported. 
 #' @param progress Character. Display processing progress. Valid values are "text", "window" and "" (no processing bar).
 #' @name raster_retile
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
@@ -18,10 +20,16 @@
 
 raster_retile=function(raster,tilebasename,targetDir,
 		ps=c(256,256),ol=c(0,0),
-		outformat="raster",overwrite=FALSE,progress="")
+		outformat="raster",overwrite=FALSE,progress="",
+		snow_enabled=TRUE,snow_cpus=4)
 {
 #	initial_directory=getwd()
-
+#	if(snow_enabled)
+#	{
+#		sfInit( parallel=TRUE, cpus=snow_cpus)
+#	}
+	
+	
 	# Do some checks
 	if(length(ps)==1)
 	{
@@ -124,10 +132,22 @@ raster_retile=function(raster,tilebasename,targetDir,
 		return(tile_raster)
 	}
 	
-	raster_tiles=mapply(raster_retile_single_tile,tilename=tilenames,ul_single=ul_list,
-			MoreArgs=list(raster=raster,targetDir=targetDir,
-			ps_native_resolution=ps_native_resolution,ol_native_resolution=ol_native_resolution,
-			outformat=outformat,overwrite=overwrite,progress=progress,invert_coord))
+#	if(snow_enabled)
+#	{
+#		raster_tiles=clusterMap(cl=sfGetCluster(),raster_retile_single_tile,tilename=tilenames,ul_single=ul_list,
+#				MoreArgs=list(raster=raster,targetDir=targetDir,
+#				ps_native_resolution=ps_native_resolution,ol_native_resolution=ol_native_resolution,
+#				outformat=outformat,overwrite=overwrite,progress=progress,invert_coord))
+#		sfStop()
+#	} else
+#	{
+		raster_tiles=mapply(raster_retile_single_tile,tilename=tilenames,ul_single=ul_list,
+				MoreArgs=list(raster=raster,targetDir=targetDir,
+				ps_native_resolution=ps_native_resolution,ol_native_resolution=ol_native_resolution,
+				outformat=outformat,overwrite=overwrite,progress=progress,invert_coord))
+#	}
+	
+	
 	
 #	setwd(intial_directory)
 	return(raster_tiles)

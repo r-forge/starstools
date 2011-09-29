@@ -1,8 +1,8 @@
 \name{rasterToPointsWithScaling}
 \alias{rasterToPointsWithScaling}
 \title{Converts a raster to points, with optional rescaling (combines aggregate and rasterToPoints from package "raster").}
-\usage{rasterToPointsWithScaling(x, fact=2, fun=mean, expand=TRUE, na.rm=TRUE, filename="", subset_fun,
-    spatial=FALSE, ...)}
+\usage{rasterToPointsWithScaling(x, fact=2, fun=mean, expand=TRUE, na.rm=TRUE,
+    filename="", subset_fun, spatial=FALSE, ...)}
 \description{Converts a raster to points, with optional rescaling (combines aggregate and rasterToPoints from package "raster").}
 \author{Jonathan A. Greenberg \email{STARStools@estarcion.net} and Robert Hijimans}
 \seealso{\code{\link{rasterToPoints}}}

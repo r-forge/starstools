@@ -1,8 +1,10 @@
 \name{plot_azimuth}
 \alias{plot_azimuth}
 \title{Plots an azimuth raster using arrows.}
-\usage{plot_azimuth(azimuth_raster, basemap_raster, magnitude_raster, max_arrows_per_dim=25, arrowfun=arrows,
-    arrow.ex, length=0.05, magnitude_stetch=c(0.2, 0.8), azimuth_raster_aggregate_method="ngb",
+\usage{plot_azimuth(azimuth_raster, basemap_raster, magnitude_raster,
+    max_arrows_per_dim=25, arrowfun=arrows, arrow.ex, length=0.05,
+    magnitude_stetch=c(0.2, 0.8),
+    azimuth_raster_aggregate_method="ngb",
     magnitude_raster_aggregate_method, na.rm=TRUE)}
 \description{Plots an azimuth raster using arrows.}
 \author{Jonathan A. Greenberg \email{STARStools@estarcion.net}}
