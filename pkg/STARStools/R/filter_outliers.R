@@ -23,6 +23,7 @@ filter_outliers = function(x,method="tukeys")
 	if(class(x)=="zoo")
 	{
 		outliers_vector=find_outliers(x,method)
+#		print(index(x))
 		x_filtered=zoo(coredata(x)[outliers_vector],index(x)[outliers_vector])
 	}
 	if(class(x)=="spZoo" | class(x)=="station")

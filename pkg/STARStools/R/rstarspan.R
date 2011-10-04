@@ -32,7 +32,7 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",...)
 	single_vector_extraction=function(vector,rasters,merge_with_dataframe=TRUE,return_Spatial=TRUE,...)
 	{
 		rasters_names=unlist(sapply(rasters,function(x) x@layernames))
-		single_vector_extraction_data=mapply(raster::extract,x=rasters,MoreArgs=list(y=vector,...),SIMPLIFY=FALSE)
+		single_vector_extraction_data=mapply(extract_synced,x=rasters,MoreArgs=list(y=vector,...),SIMPLIFY=FALSE)
 		
 		if(class(vector)=="SpatialPolygonsDataFrame")
 		{
@@ -65,7 +65,7 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",...)
 			}
 		}
 		
-		if(class(vector)=="SpatialPointsDataFrame")
+		if(inherits(vector,"SpatialPointsDataFrame"))
 		{
 			# If vectors are points...
 			single_vector_extraction_data=do.call("cbind",single_vector_extraction_data)
@@ -74,11 +74,12 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",...)
 			{
 				single_vector_extraction_data=cbind(vector@data,single_vector_extraction_data)
 			}
+			single_vector_extraction_data_list_t_N=rep(1,nrow(single_vector_extraction_data))
 		}		
 		
-		print(sum(single_vector_extraction_data_list_t_N))
-		print(length(single_vector_extraction_data_list_t_N))
-		
+#		print(sum(single_vector_extraction_data_list_t_N))
+#		print(length(single_vector_extraction_data_list_t_N))
+#		
 		if(return_Spatial)
 		{
 			if(sum(single_vector_extraction_data_list_t_N) != length(single_vector_extraction_data_list_t_N) && class(vector)=="SpatialPolygonsDataFrame")
