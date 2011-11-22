@@ -12,7 +12,7 @@
 #' @name rstarspan
 #' @export
 
-rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",...)
+rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,bordery=0,...)
 {
 	if(!inherits(vectors,"Spatial") && !check_list_classes(vectors,"Spatial",check_inheritance=TRUE))
 	{
@@ -97,6 +97,15 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",...)
 		}
 	}
 	
+	single_vector_window_extraction=function(vector_raster_list,borderx,bordery,...)
+	{
+		vector=vector_raster_list[[1]]
+		raster=vector_raster_list[[2]]
+		# Create extent objects for cropping, this will only work on one raster at a time currently.
+		minirasters_list=crop_extents_synced(x=raster,y=vector,borderx=borderx,bordery=bordery,...)
+		return(minirasters_list)
+	}
+	
 	### Appends the extracted data to the existing data frame.
 	if(outformat=="SpatialDataFrame")
 	{
@@ -118,6 +127,19 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",...)
 			rstarspan_output=rstarspan_output[[1]]
 		}
 	}
+	
+	if(outformat=="MiniRasters")
+	{
+		# Create a list combining all vectors and rasters.
+		vector_raster_combos=expand.list(vectors,rasters)
+		rstarspan_output=mapply(single_vector_window_extraction,vector_raster_list=vector_raster_combos,
+				MoreArgs=list(borderx=borderx,bordery=bordery,...),SIMPLIFY=FALSE)
+		if(length(vectors)==1)
+		{
+			rstarspan_output=rstarspan_output[[1]]
+		}
+	}
+	
 	
 	
 	return(rstarspan_output)

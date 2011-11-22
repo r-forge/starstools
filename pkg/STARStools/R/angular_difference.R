@@ -1,10 +1,10 @@
 #' Calculates the positive angular difference between two angles.
-#' @title angular_distance
+#' @title angular_difference
 #' @param angle1 Numeric. First angle(s).
 #' @param angle2 Numeric. Second angle(s).
 #' @param units Character. The units of the input (and output).  Can be "degrees" (default) or "radians".
 #' @param na.rm Logical. Unused.  Available for compatibility with raster.
-#' @name angular_distance
+#' @name angular_difference
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
 #' @examples
 #' angle1=c(45,90,355,10)
