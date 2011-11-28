@@ -35,39 +35,64 @@
 #' plot(ppt99jan)
 #' }
 #' 
-spatial_sync_raster <- function(unsynced,reference,method="ngb",verbose=FALSE)
+spatial_sync_raster <- function(unsynced,reference,method="ngb",size_only=FALSE,raster_size,verbose=FALSE)
 {
-	new_projection=projection(reference)
-	old_projection=projection(unsynced)
 	
-	new_res=res(reference)
-	old_res=res(unsynced)
-	
-	if(new_projection!=old_projection | new_res[1] != old_res[1] | new_res[2] != old_res[2])
+	if(!size_only)
 	{
-		pr_extent=projectExtent(unsynced, new_projection)
-		# We need to fix the extent
-		pr_extent <- setExtent(pr_extent,extent(reference))
-		res(pr_extent)=res(reference)
-		if(new_projection!=old_projection)
+		new_projection=projection(reference)
+		old_projection=projection(unsynced)
+		
+		new_res=res(reference)
+		old_res=res(unsynced)
+		
+		if(new_projection!=old_projection | new_res[1] != old_res[1] | new_res[2] != old_res[2])
 		{
-			pr <- projectRaster(unsynced, pr_extent,method=method)
+			pr_extent=projectExtent(unsynced, new_projection)
+			# We need to fix the extent
+			pr_extent <- setExtent(pr_extent,extent(reference))
+			res(pr_extent)=res(reference)
+			if(new_projection!=old_projection)
+			{
+				pr <- projectRaster(unsynced, pr_extent,method=method)
+			} else
+			{
+				pr <- raster::resample(unsynced, pr_extent,method=method)
+			}
 		} else
 		{
-			pr <- raster::resample(unsynced, pr_extent,method=method)
+			pr=unsynced
 		}
+		
+		expanded_raster=expand(pr,reference)
+		synced_raster=crop(expanded_raster,reference)
+	
+	
+		# This in theory shouldn't be neccessary...
+		extent(synced_raster)=extent(reference)
 	} else
 	{
-		pr=unsynced
+		if(missing(raster_size))
+		{
+			print("For size_only=TRUE you must set the raster_size as c(ncol,nrow)")
+			return()
+		} 
+		
+		unsynced_ncol=ncol(unsynced)
+		unsynced_nrow=nrow(unsynced)
+		
+		# Eventually we should preserve the pixel size		
+		unsynced_ulx=(raster_size[[1]]-unsynced_ncol)/2
+		unsynced_uly=(raster_size[[2]]-unsynced_nrow)/2
+		
+		extent(unsynced)=extent(unsynced_ulx,unsynced_ulx+unsynced_ncol,unsynced_uly,unsynced_uly+unsynced_nrow)
+		full_extent=extent(0,raster_size[[1]],0,raster_size[[2]])
+		
+		synced_raster=expand(unsynced,full_extent)
+		extent(synced_raster)=full_extent
+		res(synced_raster)=c(1,1)
 	}
-	
-	expanded_raster=expand(pr,reference)
-	synced_raster=crop(expanded_raster,reference)
 
-
-	# This in theory shouldn't be neccessary...
-	extent(synced_raster)=extent(reference)
-	
 	return(synced_raster)
 	
 }

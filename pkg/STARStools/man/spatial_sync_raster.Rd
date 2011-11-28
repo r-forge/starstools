@@ -1,7 +1,8 @@
 \name{spatial_sync_raster}
 \alias{spatial_sync_raster}
 \title{Spatially Sync Rasters...}
-\usage{spatial_sync_raster(unsynced, reference, method="ngb", verbose=FALSE)}
+\usage{spatial_sync_raster(unsynced, reference, method="ngb", size_only=FALSE,
+    raster_size, verbose=FALSE)}
 \description{Spatially Sync Rasters}
 \details{Aligns ("syncs") a Raster to a reference Raster.
 

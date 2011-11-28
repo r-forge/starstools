@@ -1,7 +1,9 @@
 \name{rstarspan}
 \alias{rstarspan}
 \title{Extracts raster data at vector locations.}
-\usage{rstarspan(vectors, rasters, outformat="SpatialDataFrame", ...)}
+\usage{rstarspan(vectors, rasters, outformat="SpatialDataFrame", borderx=0,
+    bordery=0, force_window_odd=TRUE, miniraster_direction="vertical",
+    miniraster_vector=TRUE, ...)}
 \description{Extracts raster data at vector locations.}
 \note{If the input vector(s) are SpatialPolygonsDataFrame, the user must assign "fun" if outformat="SpatialDataFrame".
 #'}
