@@ -6,17 +6,32 @@
 #' @param ... TODO
 #' @export
 
-crop_extents_synced=function(x,y,borderx=0,bordery=0,force_window_odd=TRUE,...)
+crop_extents_synced=function(x,y,borderx=0,bordery=0,force_window_odd=TRUE,verbose=TRUE,...)
 {
 	require("raster")
 	# Sync the vector to the same coordinate system.
+	if(verbose)
+	{
+		print("Syncing the vectors to the raster's projection...")
+		
+	}
 	y_synced=spatial_sync_vector(y,x,verbose=FALSE)
 	
 	# Extract the bounding boxes of each input
+	if(verbose)
+	{
+		print("Extracting the bounding boxes of each vector...")
+		
+	}
 	y_synced_ids=1:length(y_synced)
 	y_synced_extents=mapply(function(id,y_synced) { extent(y_synced[id,]) },id=y_synced_ids,MoreArgs=list(y_synced=y_synced),
 			SIMPLIFY=FALSE)
 	
+	if(verbose)
+	{
+		print("Snapping the extents to the cell center...")
+		
+	}
 	# We need to snap the extents to the nearest cell center.
 	y_synced_extents_snapped=mapply(
 			function(extent,x){
@@ -69,12 +84,35 @@ crop_extents_synced=function(x,y,borderx=0,bordery=0,force_window_odd=TRUE,...)
 		return(modded_extent)
 	}
 
+	if(verbose)
+	{
+		print("Modifying the extents...")
+		
+	}
+	
 	y_synced_extents_expanded=mapply(mod_extent,extent=y_synced_extents_snapped,
 			MoreArgs=list(border=border_vector,force_window_odd=force_window_odd,res=res(x)),SIMPLIFY=FALSE)
 	
+	if(verbose)
+	{
+		print("Cropping...")
+		
+	}
 	minirasters_cropped=mapply(crop,y=y_synced_extents_expanded,MoreArgs=list(x=x),SIMPLIFY=FALSE)
+	if(verbose)
+	{
+		print("Expanding...")
+		
+	}
+	
+#	minirasters_expanded=minirasters_cropped
 	minirasters_expanded=mapply(expand,y=y_synced_extents_expanded,x=minirasters_cropped,SIMPLIFY=FALSE)
 	
+	if(verbose)
+	{
+		print("Finished crop_extents_synced!")
+		
+	}
 	# Note, we need to eventually check for edge images and use "expand".
 	return(minirasters_expanded)
 }

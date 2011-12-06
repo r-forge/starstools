@@ -6,14 +6,17 @@
 #' @note If the input vector(s) are SpatialPolygonsDataFrame, the user must assign "fun" if outformat="SpatialDataFrame".
 #' #' @examples
 #' tahoe_highrez <- brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
-#' tahoe_highrez_training <- readOGR(dsn=system.file("external", package="STARStools"),layer="tahoe_highrez_training")
+#' tahoe_highrez_training_polygons <- readOGR(dsn=system.file("external", package="STARStools"),layer="tahoe_highrez_training")
 #' tahoe_training_extraction <- rstarspan(vectors=tahoe_highrez_training,rasters=tahoe_highrez,outformat="SpatialDataFrame",fun=mean)
+#' tahoe_highrez_training_points <- readOGR(dsn=system.file("external", package="STARStools"),layer="tahoe_highrez_training_points")
+#' tahoe_training_extraction_minirasterstrip <- rstarspan(vectors=tahoe_highrez_training_points,
+#' rasters=tahoe_highrez,outformat="MiniRasterStrip",borderx=5,bordery=5)
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
 #' @name rstarspan
 #' @export
 
 rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,bordery=0,force_window_odd=TRUE,
-		miniraster_direction="vertical",miniraster_vector=TRUE,...)
+		miniraster_direction="vertical",miniraster_vector=TRUE,verbose=TRUE,...)
 {
 	if(!inherits(vectors,"Spatial") && !check_list_classes(vectors,"Spatial",check_inheritance=TRUE))
 	{
@@ -25,6 +28,11 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 	{
 		print("rasters must be a single raster of class inheriting Raster or a list of rasters each of class inheriting Raster.")
 		return()
+	}
+	
+	if(verbose)
+	{
+		print("Coercing raster and vectors to as list...")
 	}
 	
 	if(class(vectors)!="list"){ vectors=list(vectors) }
@@ -103,13 +111,20 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 		vector=vector_raster_list[[1]]
 		raster=vector_raster_list[[2]]
 		# Create extent objects for cropping, this will only work on one raster at a time currently.
-		minirasters_list=crop_extents_synced(x=raster,y=vector,borderx=borderx,bordery=bordery,force_window_odd,...)
+		
+		minirasters_list=crop_extents_synced(x=raster,y=vector,borderx=borderx,bordery=bordery,force_window_odd,verbose=verbose,...)
+	
 		return(minirasters_list)
 	}
 	
 	### Appends the extracted data to the existing data frame.
 	if(outformat=="SpatialDataFrame")
 	{
+		if(verbose)
+		{
+			print("Preparing a SpatialDataFrame...")
+		}
+		
 		rstarspan_output=mapply(single_vector_extraction,vector=vectors,
 				MoreArgs=list(rasters=rasters,merge_with_dataframe=TRUE,return_Spatial=TRUE,...))
 		if(length(vectors)==1)
@@ -121,6 +136,10 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 	
 	if(outformat=="DataFrame")
 	{
+		if(verbose)
+		{
+			print("Preparing a DataFrame...")
+		}
 		rstarspan_output=mapply(single_vector_extraction,vector=vectors,
 				MoreArgs=list(rasters=rasters,merge_with_dataframe=TRUE,return_Spatial=FALSE, ...),SIMPLIFY=FALSE)
 		if(length(vectors)==1)
@@ -131,6 +150,11 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 	
 	if(outformat=="MiniRasters")
 	{
+		if(verbose)
+		{
+			print("Preparing MiniRasters...")
+		}
+		
 		# Create a list combining all vectors and rasters.
 		vector_raster_combos=expand.list(vectors,rasters)
 		rstarspan_output=mapply(single_vector_window_extraction,vector_raster_list=vector_raster_combos,
@@ -143,12 +167,33 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 	
 	if(outformat=="MiniRasterStrip")
 	{
+		setOptions(todisk=TRUE)
+		
+		if(verbose)
+		{
+			print("Preparing a MiniRasterStrip...")
+		}
+		
 		# Create a list combining all vectors and rasters.
+		if(verbose)
+		{
+			print("Create a list combining all vectors and rasters...")
+		}
+	
 		vector_raster_combos=expand.list(vectors,rasters)
 		
 		# Create minirasters first
+		if(verbose)
+		{
+			print("Extracting minirasters...")
+		}
 		minirasters_list=mapply(single_vector_window_extraction,vector_raster_list=vector_raster_combos,
 				MoreArgs=list(borderx=borderx,bordery=bordery,force_window_odd=TRUE,...),SIMPLIFY=FALSE)
+		
+		if(verbose)
+		{
+			print("Finished extracting minirasters...")
+		}
 		
 		# TODO: This needs to work for multiple rasters and vectors
 		if(length(vectors)==1)
@@ -161,12 +206,22 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 		minirasters_max_nrow=max(sapply(minirasters_list,nrow))
 		
 		# Sync all the minirasters
+		if(verbose)
+		{
+			print(paste("Coercing all minirasters to ",minirasters_max_ncol," by ",minirasters_max_nrow," pixels...",sep=""))
+		}
 		minirasters_list_synced=mapply(spatial_sync_raster,unsynced=minirasters_list,
 				MoreArgs=list(size_only=TRUE,raster_size=c(minirasters_max_ncol,minirasters_max_nrow)))
 		
 		# Add offsets to all of their extents
 		if(miniraster_direction=="vertical")
 		{
+			if(verbose)
+			{
+				print("Minirasterstrip will be vertical...")
+			}
+			
+			
 			minirasters_offsets_ymin=as.list((length(minirasters_list_synced)-1):0*minirasters_max_nrow)
 			minirasters_offsets_ymax=as.list(((length(minirasters_list_synced)-1):0*minirasters_max_nrow)+minirasters_max_nrow)
 			minirasters_offsets_xmin=sapply(minirasters_list_synced,xmin,simplify=FALSE)
@@ -175,6 +230,12 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 		{
 			# TODO: Horizontal minirasterstrips
 		}
+		
+		if(verbose)
+		{
+			print("Modifying miniraster extents for mosaic...")
+		}
+		
 		minirasters_list_synced_offsets=mapply(
 			function(miniraster,minirasters_offsets_xmin,minirasters_offsets_xmax,
 				minirasters_offsets_ymin,minirasters_offsets_ymax)
@@ -186,14 +247,29 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 				},
 				miniraster=minirasters_list_synced,
 				minirasters_offsets_xmin=minirasters_offsets_xmin,minirasters_offsets_xmax=minirasters_offsets_xmax,
-				minirasters_offsets_ymin=minirasters_offsets_ymin,minirasters_offsets_ymax=minirasters_offsets_ymax
+				minirasters_offsets_ymin=minirasters_offsets_ymin,minirasters_offsets_ymax=minirasters_offsets_ymax,
+				SIMPLIFY=FALSE
 		)
 
-		minirasterstrip=mosaic(minirasters_list_synced_offsets,fun=mean)
+		if(verbose)
+		{
+			print("Mosaicking minirasters into the minirasterstrip...")
+			print(minirasters_list_synced_offsets)
+			print(class(minirasters_list_synced_offsets))
+		}
+		
+#		minirasterstrip=mosaic(minirasters_list_synced_offsets,fun=mean)
+		minirasterstrip=merge(minirasters_list_synced_offsets)
+		print(class(minirasterstrip))
 		rstarspan_output=minirasterstrip
 		
 		if(miniraster_vector)
 		{
+			if(verbose)
+			{
+				print("Creating the minirasterstrip vector...")
+			}
+			
 			# Reform vectors
 			minirasterstrip_vectors=mapply(
 				function(vector_raster_combo,minirasters_offsets_xmin,minirasters_offsets_xmax,
@@ -221,9 +297,13 @@ rstarspan=function(vectors,rasters,outformat="SpatialDataFrame",borderx=0,border
 				minirasterstrip_vectors=minirasterstrip_vectors[[1]]
 			}
 			rstarspan_output=list(rstarspan_output,minirasterstrip_vectors)
+			setOptions(todisk=FALSE)
 		}
 		
 	}
-	
+	if(verbose)
+	{
+		print("Finished!  Returning output.")
+	}
 	return(rstarspan_output)
 }
