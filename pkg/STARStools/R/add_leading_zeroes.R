@@ -17,6 +17,8 @@
 #' add_leading_zeroes(x,number_length=4)
 #' add_leading_zeroes(x,max_number=10000)
 #' 
+#' @export
+
 add_leading_zeroes=function(number,number_length,max_number)
 {
 	if(missing(max_number))
