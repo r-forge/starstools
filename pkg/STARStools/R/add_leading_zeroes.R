@@ -1,3 +1,4 @@
+#' add_leading_zeroes
 #' Add Leading Zeroes to a Numeric Vector
 #' 
 #' Appends leading zeroes to a vector of numbers based on a string length or a

@@ -1,8 +1,9 @@
 \name{add_leading_zeroes}
 \alias{add_leading_zeroes}
-\title{Add Leading Zeroes to a Numeric Vector...}
+\title{add_leading_zeroes...}
 \usage{add_leading_zeroes(number, number_length, max_number)}
-\description{Add Leading Zeroes to a Numeric Vector}
+\description{add_leading_zeroes
+Add Leading Zeroes to a Numeric Vector}
 \details{Appends leading zeroes to a vector of numbers based on a string length or a
 maximum number.}
 \value{A character vector.}

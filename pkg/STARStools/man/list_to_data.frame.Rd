@@ -1,8 +1,9 @@
 \name{list_to_data.frame}
 \alias{list_to_data.frame}
-\title{Convert a List to a Data Frame...}
+\title{list_to_data...}
 \usage{list_to_data.frame(x)}
-\description{Convert a List to a Data Frame}
+\description{list_to_data.frame
+Convert a List to a Data Frame}
 \details{Takes a list of equal-sized objects and returns a data frame.}
 \value{A data frame with listed vectors as rows.}
 \author{Jonathan A. Greenberg, Alison R. Mynsberge}

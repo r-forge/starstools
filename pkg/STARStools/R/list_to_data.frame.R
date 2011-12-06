@@ -1,3 +1,4 @@
+#' list_to_data.frame
 #' Convert a List to a Data Frame
 #' 
 #' Takes a list of equal-sized objects and returns a data frame.
@@ -15,6 +16,8 @@
 #' length(x)==length(y)
 #' list_to_data.frame(list(x,y))
 #' 
+#' @export
+
 list_to_data.frame <- function(x)
 {
 	list_N=length(x)

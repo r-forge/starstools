@@ -1,3 +1,4 @@
+#' train_test_sampling
 #' @export
 
 train_test_sampling <- function(data,factor,train_p=0.5,test_p=0.5)
