@@ -1,4 +1,7 @@
 \name{as.Date}
 \alias{as.Date}
-\title{as...}
-\description{as.Date}
+\title{as.Date}
+\description{
+  as.Date
+}
+

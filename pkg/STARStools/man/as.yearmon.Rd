@@ -1,4 +1,7 @@
 \name{as.yearmon}
 \alias{as.yearmon}
-\title{as...}
-\description{as.yearmon}
+\title{as.yearmon}
+\description{
+  as.yearmon
+}
+

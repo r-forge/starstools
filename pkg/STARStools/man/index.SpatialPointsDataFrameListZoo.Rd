@@ -1,8 +1,18 @@
 \name{index.SpatialPointsDataFrameListZoo}
 \alias{index.SpatialPointsDataFrameListZoo}
-\title{index...}
-\usage{index.SpatialPointsDataFrameListZoo(x, SpatialDataFrameList=TRUE, ...)}
-\description{index.SpatialPointsDataFrameListZoo}
-\arguments{\item{x}{TODO}
-\item{SpatialDataFrameList}{TODO}
-\item{...}{TODO}}
+\title{index.SpatialPointsDataFrameListZoo}
+\usage{
+  index.SpatialPointsDataFrameListZoo(x,
+    SpatialDataFrameList = TRUE, ...)
+}
+\arguments{
+  \item{x}{TODO}
+
+  \item{SpatialDataFrameList}{TODO}
+
+  \item{...}{TODO}
+}
+\description{
+  index.SpatialPointsDataFrameListZoo
+}
+

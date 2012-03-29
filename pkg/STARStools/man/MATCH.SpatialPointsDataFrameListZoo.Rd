@@ -1,7 +1,15 @@
 \name{MATCH.SpatialPointsDataFrameListZoo}
 \alias{MATCH.SpatialPointsDataFrameListZoo}
-\title{MATCH...}
-\usage{MATCH.SpatialPointsDataFrameListZoo(x, ...)}
-\description{MATCH.SpatialPointsDataFrameListZoo}
-\arguments{\item{x}{TODO}
-\item{...}{TODO}}
+\title{MATCH.SpatialPointsDataFrameListZoo}
+\usage{
+  MATCH.SpatialPointsDataFrameListZoo(x, ...)
+}
+\arguments{
+  \item{x}{TODO}
+
+  \item{...}{TODO}
+}
+\description{
+  MATCH.SpatialPointsDataFrameListZoo
+}
+

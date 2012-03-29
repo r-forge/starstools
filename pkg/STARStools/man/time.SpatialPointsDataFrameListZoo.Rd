@@ -1,7 +1,15 @@
 \name{time.SpatialPointsDataFrameListZoo}
 \alias{time.SpatialPointsDataFrameListZoo}
-\title{time...}
-\usage{time.SpatialPointsDataFrameListZoo(x, ...)}
-\description{time.SpatialPointsDataFrameListZoo}
-\arguments{\item{x}{TODO}
-\item{...}{TODO}}
+\title{time.SpatialPointsDataFrameListZoo}
+\usage{
+  time.SpatialPointsDataFrameListZoo(x, ...)
+}
+\arguments{
+  \item{x}{TODO}
+
+  \item{...}{TODO}
+}
+\description{
+  time.SpatialPointsDataFrameListZoo
+}
+

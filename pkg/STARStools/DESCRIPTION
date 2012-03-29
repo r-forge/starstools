@@ -6,15 +6,27 @@ Type: Package
 LazyLoad: yes
 Author: Jonathan Asher Greenberg
 Description: R functions for working spatial/remote sensing data.
-Version: 0.7
-Date: 2011-12-06
-Depends: methods, raster, rgdal, sp, zoo, maptools, circular, fields
-Collate: 'AAAclass_definitions.R' 'AAAgeneric_definitions.R'
+Version: 0.8
+Date: 2012-03-29
+Depends:
+    methods,
+    raster,
+    rgdal,
+    sp,
+    zoo,
+    maptools,
+    circular,
+    fields
+Collate:
+    'AAAclass_definitions.R'
+    'AAAgeneric_definitions.R'
     'MATCH.SpatialPointsDataFrameListZoo_.R'
     'MATCH.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
-    'add_leading_zeroes.R' 'aggregate.SpatialPointsDataFrameListZoo_.R'
+    'add_leading_zeroes.R'
+    'aggregate.SpatialPointsDataFrameListZoo_.R'
     'aggregate.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
-    'angular_difference.R' 'as.Date.SpatialPointsDataFrameListZoo_.R'
+    'angular_difference.R'
+    'as.Date.SpatialPointsDataFrameListZoo_.R'
     'as.Date.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
     'as.SpatialPointsDataFrameList.R'
     'as.SpatialPointsDataFrameListZoo.R'
@@ -24,18 +36,33 @@ Collate: 'AAAclass_definitions.R' 'AAAgeneric_definitions.R'
     'as.list.SpatialPointsDataFrameList_SpatialPointsDataFrameList.R'
     'as.yearmon.SpatialPointsDataFrameListZoo_.R'
     'as.yearmon.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
-    'check_list_classes.R' 'circ.mean.na.rm.R' 'crop_extents_synced.R'
-    'expand.list.R' 'extract_synced.R' 'filter_outliers.R'
+    'check_list_classes.R'
+    'circ.mean.na.rm.R'
+    'crop_extents_synced.R'
+    'expand.list.R'
+    'extract_synced.R'
+    'filter_outliers.R'
     'index.SpatialPointsDataFrameListZoo_.R'
     'index.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
-    'kernel_maker.R' 'list_to_data.frame.R' 'plot_azimuth.R'
-    'radians_to_degrees.R' 'rasterToPointsWithScaling.R'
-    'raster_retile.R' 'rstarspan.R' 'spatial_sync_raster.R'
+    'kernel_maker.R'
+    'list_to_data.frame.R'
+    'plot_azimuth.R'
+    'radians_to_degrees.R'
+    'rasterToPointsWithScaling.R'
+    'raster_retile.R'
+    'rstarspan.R'
+    'spatial_sync_raster.R'
     'spatial_sync_vector.R'
     'subset.zoo.SpatialPointsDataFrameListZoo_.R'
     'subset.zoo.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
-    'tahoe_highrez_data.R' 'tahoe_highrez_training_data.R'
-    'tahoe_lidar_bareearth_data.R' 'tahoe_lidar_highesthit_data.R'
+    'tahoe_highrez_data.R'
+    'tahoe_highrez_training_data.R'
+    'tahoe_lidar_bareearth_data.R'
+    'tahoe_lidar_highesthit_data.R'
     'time.SpatialPointsDataFrameListZoo_.R'
     'time.SpatialPointsDataFrameListZoo_SpatialPointsDataFrameListZoo.R'
-    'train_test_sampling.R' 'write_raster_list.R'
+    'train_test_sampling.R'
+    'write_raster_list.R'
+    'remove_file_extension.R'
+    'write_ENVI_meta.R'
+    'extract_overlap_rasters.R'
