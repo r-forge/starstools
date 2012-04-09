@@ -1,4 +1,11 @@
-# What to do with even sized 
+#' kernel_maker
+#' @param kernelx TODO
+#' @param kernely TODO
+#' @param kernelz TODO
+#' @param shape TODO
+#' @param outformat TODO
+#' @param outkernelfname TODO
+#' @export
 
 
 kernel_maker=function(kernelx=3,kernely=3,kernelz=1,shape="circular",outformat="ENVI",

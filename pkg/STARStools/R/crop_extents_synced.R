@@ -3,7 +3,8 @@
 #' @param y TODO
 #' @param borderx x border in pixels
 #' @param bordery y border in pixels
-#' @param ... TODO
+#' @param force_window_odd TODO
+#' @param verbose TODO
 #' @export
 
 crop_extents_synced=function(x,y,borderx=0,bordery=0,force_window_odd=TRUE,verbose=TRUE,...)

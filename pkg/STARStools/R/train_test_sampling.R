@@ -1,5 +1,10 @@
 #' train_test_sampling
+#' @param data TODO
+#' @param factor TODO
+#' @param train_p TODO
+#' @param test_p TODO
 #' @export
+
 
 train_test_sampling <- function(data,factor,train_p=0.5,test_p=0.5)
 {

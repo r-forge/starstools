@@ -1,3 +1,8 @@
+#' expand.list
+#' @param list1 TODO
+#' @param list2 TODO
+#' @export
+
 expand.list = function(list1,list2)
 {
 	list1_N=length(list1)

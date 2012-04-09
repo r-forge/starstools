@@ -7,7 +7,7 @@
 #' @param x a list of vectors of equal length
 #' @return A data frame with listed vectors as rows.
 #' @author Jonathan A. Greenberg, Alison R. Mynsberge
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+# @seealso TODO
 #' @keywords format
 #' @examples
 #' 

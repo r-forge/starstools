@@ -13,9 +13,6 @@
   Coerces two rasters to have a shared subset of their
   common overlap.
 }
-\examples{
-TODO
-}
 \author{
   Jonathan A. Greenberg \email{STARStools@estarcion.net}
 }

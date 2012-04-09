@@ -13,6 +13,8 @@
 #' 'ngb' (nearest neighbor) or 'bilinear' (bilinear interpolation).
 #' @param verbose verbose=TRUE gives feedback on the process (UNSUPPORTED AT
 #' PRESENT).
+#' @param size_only TODO
+#' @param raster_size TODO
 #' @return Returns a RasterLayer, RasterBrick or RasterStack object synced to
 #' the reference raster object.
 #' @author Jonathan A. Greenberg

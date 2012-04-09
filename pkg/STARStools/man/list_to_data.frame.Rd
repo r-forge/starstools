@@ -24,8 +24,5 @@ list_to_data.frame(list(x,y))
 \author{
   Jonathan A. Greenberg, Alison R. Mynsberge
 }
-\seealso{
-  %% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \keyword{format}
 

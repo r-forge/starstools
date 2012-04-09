@@ -1,5 +1,5 @@
 #' An S4 class that expands a SpatialPointsDataFrame to include a list.
-#' @slot list 
+# @slot list 
 #' @export
 setClass("SpatialPointsDataFrameList",representation(list="list"),contains=c("SpatialPointsDataFrame"))
 

@@ -4,8 +4,6 @@
 #' @param raster2 TODO
 #' @name extract_overlap_rasters
 #' @author Jonathan A. Greenberg \email{STARStools@@estarcion.net}
-#' @examples
-#' TODO
 #' @export
 
 

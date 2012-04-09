@@ -22,6 +22,18 @@
 
   \item{...}{See ?extract for parameters (e.g. "fun") that
   can be used.}
+
+  \item{borderx}{TODO}
+
+  \item{bordery}{TODO}
+
+  \item{force_window_odd}{TODO}
+
+  \item{miniraster_direction}{TODO}
+
+  \item{miniraster_vector}{TODO}
+
+  \item{verbose}{TODO}
 }
 \description{
   Extracts raster data at vector locations.
@@ -29,15 +41,16 @@
 \note{
   If the input vector(s) are SpatialPolygonsDataFrame, the
   user must assign "fun" if outformat="SpatialDataFrame".
-  #'
 }
 \examples{
+\dontrun{
 tahoe_highrez <- brick(system.file("external/tahoe_highrez.tif", package="STARStools"))
 tahoe_highrez_training_polygons <- readOGR(dsn=system.file("external", package="STARStools"),layer="tahoe_highrez_training")
 tahoe_training_extraction <- rstarspan(vectors=tahoe_highrez_training,rasters=tahoe_highrez,outformat="SpatialDataFrame",fun=mean)
 tahoe_highrez_training_points <- readOGR(dsn=system.file("external", package="STARStools"),layer="tahoe_highrez_training_points")
 tahoe_training_extraction_minirasterstrip <- rstarspan(vectors=tahoe_highrez_training_points,
 rasters=tahoe_highrez,outformat="MiniRasterStrip",borderx=5,bordery=5)
+}
 }
 \author{
   Jonathan A. Greenberg \email{STARStools@estarcion.net}

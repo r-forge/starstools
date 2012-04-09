@@ -14,7 +14,9 @@
 
   \item{bordery}{y border in pixels}
 
-  \item{...}{TODO}
+  \item{force_window_odd}{TODO}
+
+  \item{verbose}{TODO}
 }
 \description{
   crop_extents_synced

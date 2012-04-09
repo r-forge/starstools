@@ -19,6 +19,10 @@
 
   \item{verbose}{verbose=TRUE gives feedback on the process
   (UNSUPPORTED AT PRESENT).}
+
+  \item{size_only}{TODO}
+
+  \item{raster_size}{TODO}
 }
 \value{
   Returns a RasterLayer, RasterBrick or RasterStack object

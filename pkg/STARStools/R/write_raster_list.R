@@ -1,3 +1,11 @@
+#' write_raster_list
+#' @param raster_list TODO
+#' @param prefix TODO
+#' @param outdirectory TODO
+#' @param ... TODO
+#' @export
+
+
 write_raster_list=function(raster_list,prefix,outdirectory,...)
 {
 	if(missing(outdirectory))
